@@ -1,0 +1,20 @@
+<mat-spinner *ngIf="loading"></mat-spinner>
+<ng-container *ngIf="messages$ | async as messages">
+  <p *ngIf="!loading && messages.length <= 0">
+    Il n'y a aucun message
+  </p>
+  <p class="list-title" *ngIf="!loading && messages.length > 0">MESSAGES</p>
+  <div class="message-list" *ngIf="!loading && messages.length  > 0">
+    <div class="message-list-item" *ngFor="let message of messages" (click)="onClickMessage(message._id)">
+      <img alt="Hot message bottle" [src]="message.imageUrl">
+      <div class="messages-infos">
+        <h2>{{ message.name | uppercase }}</h2>
+        <p class="message">{{ message.description }}</p>
+        <p class="note">note : {{ message.heat }}/10</p>
+        <button>
+          lire la suite
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-container>

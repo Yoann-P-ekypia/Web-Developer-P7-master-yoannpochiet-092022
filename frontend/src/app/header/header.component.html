@@ -1,0 +1,50 @@
+<nav>
+  <div class="right-nav">
+    <ul>
+      <li>
+        <a routerLink="signup" routerLinkActive="active" *ngIf="!(isAuth$ | async)">
+          <img class="logo-header" src="../assets/images/person-circle-plus-solid.svg" alt="inscription">
+          INSCRIPTION
+        </a>
+      </li>
+      <li>
+        <a routerLink="login" routerLinkActive="active" *ngIf="!(isAuth$ | async)">
+          <img class="logo-header" src="../assets/images/person-solid.svg" alt="CONNEXION">
+          CONNEXION
+        </a>
+      </li>
+      <li>
+        <a (click)="onLogout()" *ngIf="isAuth$ | async">
+          <img class="logo-header" src="../assets/images/right-to-bracket-solid.svg" alt="CONNEXION">
+          SE DÉCONNECTER
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="logo">
+    <div class="logo-text">
+      <a class="bouton-logo" href="<?php echo home_url(); ?>">
+        <img class="logo-header" src="../assets/images/icon-left-font.svg" alt="logo groupomania">
+      </a>
+      <h1>
+        Application intranet d'entreprise
+      </h1>
+    </div>
+  </div>
+  <div class="left-nav">
+    <ul>
+      <li>
+        <a routerLink="messages" routerLinkActive="active" *ngIf="isAuth$ | async">
+          <img class="logo-header" src="../assets/images/envelope-regular.svg" alt="MESSAGES">
+          TOUS LES MESSAGES
+        </a>
+      </li>
+      <li>
+        <a routerLink="new-message" routerLinkActive="active" *ngIf="isAuth$ | async">
+          <img class="logo-header" src="../assets/images/paper-plane-regular.svg" alt="NOUVEAU MESSAGE">
+          NOUVEAU MESSAGE
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

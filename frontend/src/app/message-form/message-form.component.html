@@ -1,0 +1,32 @@
+<mat-spinner *ngIf="loading"></mat-spinner>
+<form [formGroup]="messageForm" *ngIf="!loading">
+  <div class="form-group">
+    <label for="name">Nom</label>
+    <input type="text" class="form-control" id="name" formControlName="name">
+  </div>
+  <div class="form-group">
+    <label for="manufacturer">Sujet</label>
+    <input type="text" class="form-control" id="manufacturer" formControlName="manufacturer">
+  </div>
+  <div class="form-group">
+    <label for="description">Message</label>
+    <textarea class="form-control" id="description" rows="5" formControlName="description"></textarea>
+  </div>
+  <div class="form-group">
+    <input type="file" accept="image/*" #imageInput (change)="onFileAdded($event)">
+    <button mat-raised-button color="primary" (click)="imageInput.click()">ADD IMAGE</button>
+    <img [src]="imagePreview" *ngIf="imagePreview" style="max-height: 100px;display:block;margin-top:10px">
+  </div>
+  <div class="form-group">
+    <label for="main-pepper">Références</label>
+    <input type="text" class="form-control" id="main-pepper" formControlName="mainPepper">
+  </div>
+  <div class="form-group">
+    <label for="heat">Note</label>
+    <div class="heat-container">
+      <input type="range" class="custom-range heat-range" min="1" max="10" id="heat" formControlName="heat">
+      <input type="number" class="form-control heat-reading" formControlName="heatValue">
+    </div>
+  </div>
+  <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="messageForm.invalid">SUBMIT</button>
+</form>
